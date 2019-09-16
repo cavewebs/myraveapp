@@ -1,14 +1,23 @@
 <ion-header>
   <ion-toolbar>
     <ion-title>
-      Ionic Blank
+      Ionic4 Rave
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <div class="ion-padding">
-    The world is your oyster.
-    <p>If you get lost, the <a target="_blank" rel="noopener" href="https://ionicframework.com/docs/">docs</a> will be your guide.</p>
-  </div>
+ <ion-card class="wallet-card">
+  <ion-card-header>
+    <ion-card-subtitle color="primary" >Wallet Balance  </ion-card-subtitle>
+    <ion-card-title>{{ 5000 | currency:'NGN':'symbol-narrow':'4.2-2' }}</ion-card-title>
+  </ion-card-header>
+
+  <ion-card-content>
+  	<h6>Enter amount to add to your wallet or withdraw</h6>
+    <ion-input type="number" placeholder="5000" [(ngModel)]="amount" ></ion-input>
+    <ion-button (click)="ravePay()"> Add Money </ion-button>
+  </ion-card-content>
+</ion-card>
+
 </ion-content>

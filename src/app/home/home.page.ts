@@ -21,7 +21,7 @@ export class HomePage {
 
 
  ravePay() {
-      this.rave.init(true, "FLWPUBK-77350cbb62c4eb4aa8c4b78b6ff28df1-X")
+      this.rave.init(true, "PUBLIC_KEY") //true = production, false = test
       .then(_ => {
         var paymentObject = this.ravePayment.create({
           customer_email: "user@example.com",
@@ -40,11 +40,11 @@ export class HomePage {
             const browser: InAppBrowserObject = this.rave.render(secure_link, this.iab);
             browser.on("loadstop")
                 .subscribe((event: InAppBrowserEvent) => {
-                  if(event.url.indexOf('http://localhost:8100/home') != -1) {
+                  if(event.url.indexOf('https://your-callback-url') != -1) {
                     if(this.rave.paymentStatus('url') == 'failed') {
-                      console.log("Message", "Oops! Transaction failed");
+                      console.log("failed Message");
                     }else {
-                      console.log("Message", "Transaction Succesful");
+                      console.log("Transaction Succesful");
 
                     }
                     browser.close()
